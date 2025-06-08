@@ -1,0 +1,62 @@
+ملفات منصة التداول - انسخ والصق كل ملف:
+
+=== app.py ===
+#!/usr/bin/env python3
+"""
+منصة التداول الشاملة - النسخة المحسنة للنشر
+"""
+
+import streamlit as st
+import os
+import sys
+
+# إعداد الصفحة
+st.set_page_config(
+    page_title="منصة التداول الشاملة",
+    page_icon="📈",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# استيراد وتشغيل التطبيق الرئيسي
+try:
+    # تشغيل التطبيق الرئيسي
+    exec(open('comprehensive_trading_app.py').read())
+except FileNotFoundError:
+    st.error("لم يتم العثور على ملف التطبيق الرئيسي")
+    st.info("يرجى التأكد من وجود ملف comprehensive_trading_app.py")
+except Exception as e:
+    st.error(f"خطأ في تشغيل التطبيق: {str(e)}")
+    st.info("يرجى التحقق من المكتبات المطلوبة")
+
+if __name__ == "__main__":
+    pass
+
+=== packages.txt ===
+streamlit==1.28.0
+yfinance==0.2.20
+plotly==5.15.0
+pandas==2.0.3
+numpy==1.24.3
+pytz==2023.3
+stripe==6.0.0
+twilio==8.5.0
+requests==2.31.0
+
+=== Procfile ===
+web: streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
+
+=== .streamlit/config.toml ===
+[server]
+headless = true
+address = "0.0.0.0"
+port = 5000
+
+[theme]
+base = "light"
+primaryColor = "#1f77b4"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f0f2f6"
+
+احفظ comprehensive_trading_app.py منفصل - حجمه كبير
+احفظ users.json, user_subscriptions.json, chat_messages.json, support_tickets.json من القائمة
